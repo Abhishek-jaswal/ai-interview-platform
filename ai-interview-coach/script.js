@@ -12,3 +12,21 @@ let aar1 = [1,5,7,4,2,3,6,4];
 let arr1 = [1,2,3,4,5,678,4];
 let unique = [...new Set(arr1,aar1)];
 console.log(unique);
+
+// check palindrom 
+function isPalindrome(str){
+    let reversed = str.split('').reverse().join();
+    return str === reversed
+;}
+console.log(isPalindrome('yes'));
+
+function isPalindrom(str) {
+    return str === str.split("").reverse().join("");
+  }
+  console.log(isPalindrom("madam")); // true
+  
+
+  //reverse string
+  let  naam = "abhishek";
+  let reversedString = naam.split("").reverse().join("");
+  console.log(reversedString);
