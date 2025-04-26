@@ -44,7 +44,8 @@ export default function UploadPage() {
   };
 
   return (
-    <div className="p-8 max-w-2xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex items-center justify-center p-4">
+    <div className="p-4 max-w-2xl mx-auto items-center justify-center p-6">
       <h1 className="text-2xl font-bold mb-4">Upload Your Resume (PDF)</h1>
 
       <input
@@ -69,7 +70,7 @@ export default function UploadPage() {
       <button
         onClick={handleAnalyze}
         disabled={loading || !text}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+        className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-bold transition"
       >
         {loading ? 'Analyzing...' : 'Analyze with AI'}
       </button>
@@ -80,6 +81,7 @@ export default function UploadPage() {
           <pre className="whitespace-pre-wrap">{analysis}</pre>
         </div>
       )}
+    </div>
     </div>
   );
 }
