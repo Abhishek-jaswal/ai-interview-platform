@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { extractTextFromPDF } from '@/lib/parsePdf';
+import Header from '@/components/Header';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 export default function UploadPage() {
   const [text, setText] = useState('');
@@ -44,7 +46,11 @@ export default function UploadPage() {
   };
 
   return (
+     <div>
+      <ProtectedRoute>
+     <Header/>
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex items-center justify-center p-4">
+   
     <div className="p-4 max-w-2xl mx-auto items-center justify-center p-6">
       <h1 className="text-2xl font-bold mb-4">Upload Your Resume (PDF)</h1>
 
@@ -63,7 +69,7 @@ export default function UploadPage() {
         value={text}
         rows={10}
         readOnly
-        className="w-full p-4 border rounded mb-4"
+        className="w-full p-4  rounded mb-4"
         placeholder="Extracted text will appear here..."
       />
 
@@ -82,6 +88,8 @@ export default function UploadPage() {
         </div>
       )}
     </div>
+    </div>
+    </ProtectedRoute>
     </div>
   );
 }
