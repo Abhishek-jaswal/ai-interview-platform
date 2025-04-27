@@ -1,5 +1,7 @@
 'use client';
 
+import Header from '@/components/Header';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import { useState } from 'react';
 
 const TOPICS = ['Frontend', 'Backend', 'DSA', 'System Design', 'HR'];
@@ -14,6 +16,7 @@ export default function InterviewPage() {
   const [interviewEnded, setInterviewEnded] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
 
+  
   const startInterview = () => {
     if (!topic) return;
     const welcomeMessage = {
@@ -96,7 +99,11 @@ Thanks for practicing! 🚀 Keep growing! 💪`,
   );
 
   return (
+    <div>
+      <ProtectedRoute>
+    <Header/>
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex items-center justify-center p-6">
+    
       <div className="bg-gray-100 shadow-lg rounded-2xl p-8 max-w-3xl w-full space-y-6">
         <h1 className="text-4xl font-extrabold text-center text-purple-700">🎤 AI Mock Interview</h1>
 
@@ -178,6 +185,8 @@ Thanks for practicing! 🚀 Keep growing! 💪`,
           </>
         )}
       </div>
+    </div>
+    </ProtectedRoute>
     </div>
   );
 }
