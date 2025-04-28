@@ -1,15 +1,21 @@
-'use client';
-
 import './globals.css';
-import { SessionProvider } from 'next-auth/react';
+import SessionProviderWrapper from './providers/SessionProviderWrapper';
+
+export const metadata = {
+  title: "AI Interview Portal",
+  description: "Upload your resume and practice mock interviews with AI!",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <SessionProvider>
+        <SessionProviderWrapper>
           {children}
-        </SessionProvider>
+        </SessionProviderWrapper>
       </body>
     </html>
   );
