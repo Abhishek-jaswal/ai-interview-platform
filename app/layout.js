@@ -1,5 +1,6 @@
 import './globals.css';
 import SessionProviderWrapper from './providers/SessionProviderWrapper';
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: "AI Interview Portal",
@@ -12,9 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex flex-col min-h-screen">
         <SessionProviderWrapper>
-          {children}
+          <main className="flex-grow">{children}</main>
+          <Footer />
         </SessionProviderWrapper>
       </body>
     </html>
