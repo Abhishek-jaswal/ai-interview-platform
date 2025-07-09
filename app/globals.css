@@ -1,2 +1,5 @@
 @import "tailwindcss";
 
+:root {
+  --font-patrick-hand: 'Patrick Hand', cursive;
+}
