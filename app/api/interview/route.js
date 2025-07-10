@@ -22,21 +22,21 @@ Respond in this format:
 🧠 Next Question: ... (only if < 5 rounds)
 `;
 
- const res = await fetch('https://api.openai.com/v1/chat/completions', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // Use your OpenAI secret key
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'gpt-3.5-turbo', // or 'gpt-4o'
-    messages: [
-      { role: 'system', content: systemPrompt },
-      ...messages,
-    ],
-  }),
-});
-
+  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': 'http://localhost:3000',
+    },
+    body: JSON.stringify({
+      model: 'openai/gpt-3.5-turbo',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        ...messages,
+      ],
+    }),
+  });
 
   const data = await res.json();
 

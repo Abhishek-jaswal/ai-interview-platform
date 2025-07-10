@@ -22,7 +22,7 @@ export default function Footer() {
           LinkedIn
         </a>
         <a
-          href="https://resume-chi-ochre.vercel.app/"
+          href="https://abhishek-jaswal.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-500 hover:text-blue-700"
