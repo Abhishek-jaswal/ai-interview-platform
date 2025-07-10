@@ -135,7 +135,7 @@ Thanks for practicing! Keep growing! 💪`,
               </div>
               <hr className="border-gray-200" />
 
-              <div className="rounded-lg p-4 h-[400px] md:h-[500px] overflow-y-auto bg-gray-300 space-y-3 text-gray-700">
+              <div className="rounded-lg p-4 h-[400px] md:h-[500px] overflow-y-auto bg-gray-700 space-y-3 text-gray-200">
                 {messages.map((msg, index) => (
                   <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div
@@ -156,7 +156,7 @@ Thanks for practicing! Keep growing! 💪`,
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                    className="flex-1 border-2 border-gray-300 p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    className="flex-1 border-2 border-gray-300 p-3 rounded-full text-gray-200focus:outline-none focus:ring-2 focus:ring-gray-500"
                     placeholder="Type your answer here..."
                   />
                   <button
