@@ -17,7 +17,7 @@ export default function LoginPage() {
     return (
       <div>
         <Header />
-        <div className=" flex flex-col items-center justify-center bg-gradient-to-br from-gray-700 via-gray-800 to-pink-50 p-4">
+        <div className=" flex flex-col items-center justify-center bg-gradient-to-br from-gray-700 via-gray-800 to-pink-50 p-4 font-[family-name:var(--font-patrick-hand)]">
           <h1 className="text-3xl md:text-4xl font-bold mt-6 text-gray-50 text-center">
             Welcome, {session?.user?.name || 'Admin'} 👋
           </h1>
@@ -38,7 +38,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4 pb-0 font-[family-name:var(--font-patrick-hand)]">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-700 via-gray-800 to-pink-50 text-white p-4 pb-0 font-[family-name:var(--font-patrick-hand)]">
       <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center">
         AI-Interview Platform
       </h1>

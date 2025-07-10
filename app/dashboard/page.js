@@ -10,7 +10,7 @@ export default function Dashboard() {
   return (
     <ProtectedRoute>
       <div className="min-h-screen flex flex-col items-center justify-center  font-[family-name:var(--font-patrick-hand)] ">
-        <div className="shadow-lg rounded-2xl p-6 md:p-10  max-w-3xl w-full ">
+        <div className="shadow-lg rounded-2xl  md:p-10  max-w-3xl w-full ">
           <h1 className="text-3xl md:text-4xl font-extrabold text-center text-white mb-4">
              AI Interview Portal Dashboard
           </h1>
