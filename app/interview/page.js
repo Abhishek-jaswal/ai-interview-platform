@@ -60,7 +60,7 @@ export default function InterviewPage() {
 
 ⭐ **Total Score:** ${totalScore + score}/25
 
-Thanks for practicing! 🚀 Keep growing! 💪`,
+Thanks for practicing! Keep growing! 💪`,
         };
         setMessages([...newMessages, finalMessage]);
         setInterviewEnded(true);
@@ -86,7 +86,7 @@ Thanks for practicing! 🚀 Keep growing! 💪`,
   };
 
   const typingAnimation = () => (
-    <span className="italic text-gray-400">
+    <span className="italic text-gray-300">
       ⏳ AI is thinking
       <span className="animate-ping inline-block mx-1 text-xl">.</span>
       <span className="animate-ping inline-block mx-1 text-xl">.</span>
@@ -97,13 +97,13 @@ Thanks for practicing! 🚀 Keep growing! 💪`,
   return (
     <ProtectedRoute>
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex items-center justify-center p-4 md:p-8">
-        <div className="bg-white shadow-lg rounded-2xl p-6 md:p-10 w-full max-w-4xl space-y-6">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-center text-purple-700">🎤 AI Mock Interview</h1>
+      <div className="min-h-screen bg-gradient-to-br from-gray-700 via-gray-800 to-pink-50 flex items-center justify-center p-4 md:p-8 font-[family-name:var(--font-patrick-hand)]">
+        <div className=" shadow-lg rounded-2xl p-6 md:p-10 w-full max-w-4xl space-y-6">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-center text-gray-100">🎤 AI Mock Interview</h1>
 
           {!started ? (
             <div className="space-y-6 text-center">
-              <p className="text-lg font-semibold text-gray-700">Select a topic to begin:</p>
+              <p className="text-lg font-semibold text-gray-200">Select a topic to begin:</p>
               <div className="flex flex-wrap justify-center gap-3">
                 {TOPICS.map((t) => (
                   <button
@@ -111,9 +111,9 @@ Thanks for practicing! 🚀 Keep growing! 💪`,
                     onClick={() => setTopic(t)}
                     className={`px-5 py-2 rounded-full border-2 font-semibold ${
                       topic === t
-                        ? 'bg-purple-600 text-white border-purple-600'
-                        : 'border-purple-400 text-purple-600'
-                    } transition hover:bg-purple-600 hover:text-white`}
+                        ? 'bg-gray-600 text-gray-200 border-gray-600'
+                        : 'border-gray-400 text-gray-500'
+                    } transition hover:bg-gray-600 hover:text-gray-200 hover:border-gray-600`}
                   >
                     {t}
                   </button>
@@ -122,25 +122,25 @@ Thanks for practicing! 🚀 Keep growing! 💪`,
               <button
                 onClick={startInterview}
                 disabled={!topic}
-                className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-3 rounded-full font-bold transition w-full sm:w-auto"
+                className="bg-gray-700 hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-gray-200 px-6 py-3 rounded-full font-bold transition w-full sm:w-auto"
               >
                 🚀 Start Interview
               </button>
             </div>
           ) : (
             <>
-              <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+              <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-300">
                 <div>🎯 Question: {questionCount} / 5</div>
                 <div>⭐ Score: {totalScore} / 25</div>
               </div>
-              <hr className="border-gray-400" />
+              <hr className="border-gray-200" />
 
-              <div className="rounded-lg p-4 h-[400px] md:h-[500px] overflow-y-auto bg-gray-100 space-y-3">
+              <div className="rounded-lg p-4 h-[400px] md:h-[500px] overflow-y-auto bg-gray-300 space-y-3 text-gray-700">
                 {messages.map((msg, index) => (
                   <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div
                       className={`max-w-[75%] p-3 rounded-lg ${
-                        msg.role === 'user' ? 'bg-blue-200' : 'bg-green-100'
+                        msg.role === 'user' ? 'bg-blue-300' : 'bg-blue-200'
                       }`}
                     >
                       <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
@@ -156,12 +156,12 @@ Thanks for practicing! 🚀 Keep growing! 💪`,
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                    className="flex-1 border-2 border-purple-300 p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    className="flex-1 border-2 border-gray-300 p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500"
                     placeholder="Type your answer here..."
                   />
                   <button
                     onClick={handleSend}
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-bold transition w-full md:w-auto"
+                    className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-bold transition w-full md:w-auto"
                   >
                     Send
                   </button>
