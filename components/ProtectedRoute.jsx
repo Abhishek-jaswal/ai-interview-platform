@@ -17,7 +17,7 @@ export default function ProtectedRoute({ children }) {
   if (status === 'loading') {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-xl font-semibold text-purple-600">⏳ Loading...</p>
+        <p className="text-xl font-semibold text-gray-700">⏳ Loading...</p>
       </div>
     );
   }

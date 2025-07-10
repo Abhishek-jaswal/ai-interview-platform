@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import Dashboard from '../dashboard/page';
 import Header from '@/components/Header';
@@ -8,22 +9,33 @@ import Link from 'next/link';
 
 export default function LoginPage() {
   const { data: session } = useSession();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  if (session) {
+  if (session || isLoggedIn) {
     return (
       <div>
         <Header />
-        <div className="min-h-screen flex flex-col items-center justify-center bg-[radial-gradient(circle_at_top_left,_#a7f3d0,_#ffffff,_#fef9c3)] p-4">
-          <h1 className="text-3xl md:text-4xl font-bold mt-6 text-gray-800 text-center">
-            Welcome, {session.user.name} 👋
+        <div className=" flex flex-col items-center justify-center bg-gradient-to-br from-gray-700 via-gray-800 to-pink-50 p-4">
+          <h1 className="text-3xl md:text-4xl font-bold mt-6 text-gray-50 text-center">
+            Welcome, {session?.user?.name || 'Admin'} 👋
           </h1>
-          <div className="w-full max-w-4xl mt-6">
+          
             <Dashboard />
-          </div>
+        
         </div>
       </div>
     );
   }
+
+  const handleLogin = () => {
+    if (email === 'admin' && password === 'admin123') {
+      setIsLoggedIn(true);
+    } else {
+      alert('Invalid credentials');
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4 pb-0 font-[family-name:var(--font-patrick-hand)]">
@@ -37,8 +49,10 @@ export default function LoginPage() {
         <div>
           <label className="block text-sm mb-1">EMAIL</label>
           <input
-            type="email"
+            type="text"
             placeholder="hello@yourwebsite.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 text-black rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           />
         </div>
@@ -47,12 +61,15 @@ export default function LoginPage() {
           <input
             type="password"
             placeholder="•••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full px-4 py-2 text-black rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           />
         </div>
         {/* Centered login button */}
         <div className="flex justify-center">
           <button
+            onClick={handleLogin}
             className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-6 rounded-xl transition shadow hover:shadow-lg"
           >
             log in
