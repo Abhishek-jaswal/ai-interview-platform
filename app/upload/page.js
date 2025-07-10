@@ -48,9 +48,9 @@ export default function UploadPage() {
   return (
     <ProtectedRoute>
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex items-center justify-center p-4 md:p-8">
-        <div className="bg-white shadow-lg rounded-2xl p-6 md:p-10 w-full max-w-3xl mx-auto space-y-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-center mb-4 text-purple-700">
+      <div className="min-h-screen bg-gradient-to-br from-gray-700 via-gray-800 to-pink-50 flex items-center justify-center p-4 md:p-8">
+        <div className="bg-gray-700 shadow-lg rounded-2xl p-6 md:p-10 w-full max-w-3xl mx-auto space-y-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-center mb-4 text-gray-100">
             📄 Upload Your Resume (PDF)
           </h1>
 
@@ -59,11 +59,11 @@ export default function UploadPage() {
               type="file"
               accept=".pdf"
               onChange={handleUpload}
-              className="border border-purple-300 p-3 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 transition"
+              className="border border-purple-300 p-3 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-600 file:text-white hover:file:bg-gray-700 transition"
             />
 
             {fileName && (
-              <p className="text-sm text-gray-600 text-center">
+              <p className="text-sm text-gray-200 text-center">
                 Uploaded: <span className="font-medium">{fileName}</span>
               </p>
             )}
@@ -72,22 +72,22 @@ export default function UploadPage() {
               value={text}
               rows={8}
               readOnly
-              className="w-full border-2 border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="w-full border-2 border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
               placeholder="Extracted text will appear here..."
             />
 
             <button
               onClick={handleAnalyze}
               disabled={loading || !text}
-              className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-3 rounded-full font-bold transition w-full"
+              className="bg-gray-700 hover:bg-gray-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-gray-100 px-6 py-3 rounded-full font-bold transition w-full"
             >
               {loading ? 'Analyzing...' : 'Analyze with AI'}
             </button>
 
             {analysis && (
               <div className="mt-6 p-4 bg-gray-100 rounded-lg">
-                <h2 className="text-xl font-semibold mb-3 text-purple-700">🧠 AI Analysis</h2>
-                <pre className="whitespace-pre-wrap text-gray-700">{analysis}</pre>
+                <h2 className="text-xl font-semibold mb-3 text-gray-100">🧠 AI Analysis</h2>
+                <pre className="whitespace-pre-wrap text-gray-300">{analysis}</pre>
               </div>
             )}
           </div>
