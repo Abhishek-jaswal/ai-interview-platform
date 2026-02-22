@@ -2,39 +2,46 @@
 
 export default function Footer() {
   return (
-    <footer className="text-center text-sm text-gray-500 mt-10 p-4">
-      <p>© 2025 AI Interview Portal. All rights reserved.</p>
-      <div className="flex justify-center gap-4 mt-2">
-        <a
-          href="https://github.com/Abhishek-jaswal"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-700"
-        >
-          GitHub 
-        </a>
-        <a
-          href="https://www.linkedin.com/in/abhishekjaswall"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-700"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://abhishek-jaswal.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-700"
-        >
-          Resume
-        </a>
-        <a
-          href="/privacy-policy"
-          className="text-blue-500 hover:text-blue-700"
-        >
-          Privacy Policy
-        </a>
+    <footer style={{
+      borderTop: '1px solid rgba(255,255,255,0.06)',
+      padding: '24px',
+      fontFamily: "'Outfit', sans-serif",
+      background: 'rgba(10,10,15,0.6)',
+    }}>
+      <div style={{
+        maxWidth: 1100, margin: '0 auto',
+        display: 'flex', flexWrap: 'wrap',
+        alignItems: 'center', justifyContent: 'space-between',
+        gap: 12,
+      }}>
+        <span style={{ fontSize: '0.78rem', color: 'rgba(241,240,238,0.25)' }}>
+          © 2025 PrepAI · Built by Abhishek
+        </span>
+        <div style={{ display: 'flex', gap: 20 }}>
+          {[
+            { label: 'GitHub', href: 'https://github.com/Abhishek-jaswal' },
+            { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abhishekjaswall' },
+            { label: 'Portfolio', href: 'https://abhishek-jaswal.vercel.app/' },
+            { label: 'Privacy', href: '/privacy-policy' },
+          ].map(link => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '0.78rem',
+                color: 'rgba(241,240,238,0.3)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = '#f59e0b'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(241,240,238,0.3)'}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
     </footer>
   );
