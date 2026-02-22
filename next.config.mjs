@@ -1,13 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    webpack: (config) => {
-        config.resolve.fallback = {
-          ...config.resolve.fallback,
-          fs: false,
-          path: false,
-        };
-        return config;
-      },
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+    config.resolve.alias.encoding = false;
+    return config;
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
