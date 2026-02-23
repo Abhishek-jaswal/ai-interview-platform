@@ -1,21 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      path: false,
-    };
+  // ... your existing config (images, redirects, etc. if any)
 
-    // Fix for pdfjs-dist canvas binary error
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      canvas: false,
-      encoding: false,
-    };
-
-    return config;
-  },
+  turbopack: {},  // ← This empty object tells Next.js you're aware of Turbopack → silences the warning/error
 };
 
 export default nextConfig;
