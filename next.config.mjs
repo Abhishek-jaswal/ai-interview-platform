@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ... your existing config (images, redirects, etc. if any)
-
-  turbopack: {},  // ← This empty object tells Next.js you're aware of Turbopack → silences the warning/error
+  webpack: (config) => {
+    config.resolve.fallback = {
+      canvas: false,
+      fs: false,
+      path: false,
+    };
+    return config;
+  },
 };
 
 export default nextConfig;
