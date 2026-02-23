@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { extractTextFromPDF } from '@/lib/parsePdf';
 import Header from '@/components/Header';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import { extractOnServer } from './actions';  // ⬅ FIXED IMPORT
 
 export default function UploadPage() {
   const [text, setText] = useState('');
@@ -12,29 +12,33 @@ export default function UploadPage() {
   const [loading, setLoading] = useState(false);
   const [dragging, setDragging] = useState(false);
 
+  // -------------------------------
+  // Read file (same logic, now calls server)
+  // -------------------------------
   const handleFile = async (file) => {
     if (!file || !file.name.endsWith('.pdf')) return;
     setFileName(file.name);
     setText('');
     setAnalysis('');
 
-    const reader = new FileReader();
-    reader.onload = async function () {
-      const buffer = new Uint8Array(this.result);
-      const extracted = await extractTextFromPDF(buffer);
-      setText(extracted);
-    };
-    reader.readAsArrayBuffer(file);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const extracted = await extractOnServer(formData);
+    setText(extracted);
   };
 
   const handleUpload = (e) => handleFile(e.target.files[0]);
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
     setDragging(false);
     handleFile(e.dataTransfer.files[0]);
   };
 
+  // -------------------------------
+  // Same analyze function
+  // -------------------------------
   const handleAnalyze = async () => {
     setLoading(true);
     setAnalysis('');
@@ -52,7 +56,6 @@ export default function UploadPage() {
       setLoading(false);
     }
   };
-
   return (
     <ProtectedRoute>
       <style>{`
