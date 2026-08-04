@@ -1,13 +1,13 @@
 import os
 import json
 import re
-from anthropic import Anthropic
+from google import genai
 from fastapi import HTTPException
 from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("ANTHROPIC_API_KEY")
+API_KEY = os.getenv("GEMINI_API_KEY")
 
 SYSTEM_PROMPT = """Tum ek expert resume reviewer ho, jo HR aur ATS (Applicant Tracking System) dono \
 perspective se resume check karte ho. Tumhe resume ka raw text diya jayega.
@@ -44,27 +44,20 @@ def analyze_resume(resume_text: str) -> dict:
     if not API_KEY:
         raise HTTPException(
             status_code=500,
-            detail="Server par ANTHROPIC_API_KEY set nahi hai. .env file me apni API key daalein.",
+            detail="Server par GEMINI_API_KEY set nahi hai. .env file me apni API key daalein.",
         )
 
-    client = Anthropic(api_key=API_KEY)
+    client = genai.Client(api_key=API_KEY)
 
     try:
-        response = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=4000,
-            system=SYSTEM_PROMPT,
-            messages=[
-                {
-                    "role": "user",
-                    "content": f"Ye resume ka text hai, ise analyze karo:\n\n{resume_text[:15000]}",
-                }
-            ],
+        response = client.models.generate_content(
+            model="gemini-3.6-flash",
+            contents=f"{SYSTEM_PROMPT}\n\nYe resume ka text hai, ise analyze karo:\n\n{resume_text[:15000]}",
         )
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"AI service se error aaya: {str(e)}")
 
-    raw_text = "".join(block.text for block in response.content if block.type == "text")
+    raw_text = response.text or ""
 
     # Kabhi kabhi model markdown fence me wrap kar deta hai, use safely strip karte hain
     cleaned = re.sub(r"^```(?:json)?|```$", "", raw_text.strip(), flags=re.MULTILINE).strip()
