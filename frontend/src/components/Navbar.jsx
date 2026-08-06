@@ -18,8 +18,10 @@ export default function Navbar() {
       </Link>
       {user && (
         <div className="nav-links">
-          <NavLink to="/" end>Check Resume</NavLink>
-          <NavLink to="/history">History</NavLink>
+          <NavLink to="/" end>Dashboard</NavLink>
+          <NavLink to="/resume">Resume</NavLink>
+          <NavLink to="/ai-interview">Interview</NavLink>
+          <NavLink to="/resume/history">History</NavLink>
           <span style={{ color: 'var(--ink-faint)' }}>{user.name}</span>
           <button className="btn secondary" onClick={handleLogout}>Logout</button>
         </div>

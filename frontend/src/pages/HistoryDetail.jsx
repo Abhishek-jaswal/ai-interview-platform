@@ -21,7 +21,7 @@ export default function HistoryDetail() {
     if (!confirm('Ye record delete karna chahte hain?')) return
     try {
       await deleteCheck(id)
-      navigate('/history')
+      navigate('/resume/history')
     } catch (err) {
       setError(err.message)
     }
@@ -41,7 +41,7 @@ export default function HistoryDetail() {
   return (
     <div className="page">
       <div className="page-head">
-        <Link to="/history" style={{ fontSize: 13, color: 'var(--ink-soft)' }}>&larr; History par wapas jayein</Link>
+        <Link to="/resume/history" style={{ fontSize: 13, color: 'var(--ink-soft)' }}>&larr; History par wapas jayein</Link>
         <h1 style={{ marginTop: 12 }}>{check?.filename}</h1>
         <p>{check && new Date(check.created_at).toLocaleString('en-IN')}</p>
       </div>

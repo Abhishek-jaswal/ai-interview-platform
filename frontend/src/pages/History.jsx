@@ -43,7 +43,7 @@ export default function History() {
       ) : (
         <div className="history-list">
           {items.map((item) => (
-            <Link to={`/history/${item.id}`} className="history-item" key={item.id}>
+            <Link to={`/resume/history/${item.id}`} className="history-item" key={item.id}>
               <div className="history-left">
                 <div className="fname">{item.filename}</div>
                 <div className="fdate">{new Date(item.created_at).toLocaleString('en-IN')}</div>

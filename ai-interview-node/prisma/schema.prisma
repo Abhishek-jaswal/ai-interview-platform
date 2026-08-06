@@ -1,0 +1,24 @@
+// Ye Node service ka database hai. Sirf ek cheez track hoti hai: user ke paas
+// kitne exam attempts bache hain. Exam ke questions, answers, ya result kabhi
+// yahan save nahi hote — wo sirf response me client ko turant bhej diye jaate
+// hain aur server memory se discard ho jaate hain.
+//
+// userId Python ke SQLAlchemy User.id (Integer) ko refer karta hai — koi
+// foreign key constraint nahi hai kyunki wo table is database me hai hi nahi,
+// Python ke alag database me hai. Ye sirf ek reference number hai.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model UserCredit {
+  userId            Int      @id
+  attemptsRemaining Int      @default(1) // naye user ko 1 free attempt milta hai
+  totalPurchased    Int      @default(0)
+  updatedAt         DateTime @updatedAt
+}
