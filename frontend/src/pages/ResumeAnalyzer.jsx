@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react'
 import { checkResume } from '../api'
 import ResultView from '../components/ResultView'
+import { SkeletonCard } from '../components/Skeleton'
 
-export default function Dashboard() {
+export default function ResumeAnalyzer() {
   const [file, setFile] = useState(null)
   const [dragActive, setDragActive] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -91,19 +92,22 @@ export default function Dashboard() {
       )}
 
       {loading && (
-        <div className="loading-wrap">
-          <div className="spinner" />
-          AI aapka resume padh raha hai, thoda intezaar karein...
+        <div style={{ marginTop: 32 }}>
+          <SkeletonCard lines={2} />
+          <div style={{ height: 14 }} />
+          <SkeletonCard lines={3} />
+          <div style={{ height: 14 }} />
+          <SkeletonCard lines={2} />
         </div>
       )}
 
       {result && (
-        <>
+        <div className="fade-in">
           <ResultView result={result} />
           <div className="actions-row" style={{ marginTop: 24 }}>
             <button className="btn secondary" onClick={reset}>Naya resume check karein</button>
           </div>
-        </>
+        </div>
       )}
     </div>
   )

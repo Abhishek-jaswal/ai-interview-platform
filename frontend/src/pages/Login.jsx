@@ -28,7 +28,7 @@ export default function Login() {
 
   return (
     <div className="auth-wrap">
-      <div className="auth-card">
+      <div className="auth-card fade-in">
         <h1>Wapas swagat hai</h1>
         <p className="sub">Login karke apna resume check karein.</p>
         {error && <div className="error-banner">{error}</div>}

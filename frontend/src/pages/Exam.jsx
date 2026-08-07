@@ -14,13 +14,12 @@ export default function Exam() {
   const session = state?.session
 
   const [current, setCurrent] = useState(0)
-  const [answers, setAnswers] = useState({}) // { questionId: 'A' | 'B' | 'C' | 'D' }
+  const [answers, setAnswers] = useState({})
   const [secondsLeft, setSecondsLeft] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const submittedRef = useRef(false)
 
-  // Agar koi seedha /ai-interview/exam URL pe aa jaye bina session ke, wapas bhej do
   useEffect(() => {
     if (!session) navigate('/ai-interview')
   }, [session, navigate])
@@ -69,7 +68,7 @@ export default function Exam() {
   }
 
   return (
-    <div className="page">
+    <div className="page fade-in">
       <div className="exam-header">
         <div className="exam-progress">
           Question {current + 1} / {session.questions.length} · {answeredCount} answered

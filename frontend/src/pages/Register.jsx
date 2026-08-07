@@ -29,7 +29,7 @@ export default function Register() {
 
   return (
     <div className="auth-wrap">
-      <div className="auth-card">
+      <div className="auth-card fade-in">
         <h1>Account banayein</h1>
         <p className="sub">Apne resumes check karne ke liye sign up karein.</p>
         {error && <div className="error-banner">{error}</div>}

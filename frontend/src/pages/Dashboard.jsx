@@ -7,10 +7,10 @@ export default function Dashboard() {
   const navigate = useNavigate()
 
   return (
-    <div className="page">
+    <div className="page fade-in">
       <div className="page-head">
         <div className="eyebrow">Dashboard</div>
-        <h1>Hello {user?.name?.split(' ')[0]} 👋</h1>
+        <h1>Hello {user?.name?.split(' ')[0]}</h1>
         <p>Aaj kya karna chahoge?</p>
       </div>
 

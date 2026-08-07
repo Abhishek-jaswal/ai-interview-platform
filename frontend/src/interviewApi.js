@@ -1,8 +1,3 @@
-// Ye Python (api.js) se ALAG file hai — AI Interview ke liye Node backend
-// (port 5000) ko call karti hai. Token wahi use hota hai jo Python login se
-// mila tha (localStorage me 'token' key), kyunki dono backend same
-// JWT_SECRET share karte hain.
-
 const BASE_URL = 'http://localhost:5000'
 
 function getToken() {
@@ -17,9 +12,7 @@ async function handleResponse(res) {
       const data = await res.json()
       detail = data.error || detail
       code = data.code
-    } catch (e) {
-      // ignore parse failure
-    }
+    } catch (e) {}
     const err = new Error(detail)
     err.code = code
     err.status = res.status
@@ -60,26 +53,6 @@ export async function submitExam(sessionId, answers) {
       Authorization: `Bearer ${getToken()}`,
     },
     body: JSON.stringify({ sessionId, answers }),
-  })
-  return handleResponse(res)
-}
-
-export async function createPaymentOrder() {
-  const res = await fetch(`${BASE_URL}/api/payment/create-order`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${getToken()}` },
-  })
-  return handleResponse(res)
-}
-
-export async function verifyPayment(payload) {
-  const res = await fetch(`${BASE_URL}/api/payment/verify`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${getToken()}`,
-    },
-    body: JSON.stringify(payload),
   })
   return handleResponse(res)
 }

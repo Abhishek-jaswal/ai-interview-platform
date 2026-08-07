@@ -20,7 +20,7 @@ export default function InterviewResult() {
   const { examName, overallScore, correct, wrong, unattempted, totalQuestions, subjectBreakdown, aiFeedback } = result
 
   return (
-    <div className="page">
+    <div className="page fade-in">
       <div className="page-head">
         <div className="eyebrow">Result</div>
         <h1>{examName}</h1>

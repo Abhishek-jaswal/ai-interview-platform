@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getCheckDetail, deleteCheck } from '../api'
 import ResultView from '../components/ResultView'
+import { SkeletonCard } from '../components/Skeleton'
 
 export default function HistoryDetail() {
   const { id } = useParams()
@@ -30,16 +31,16 @@ export default function HistoryDetail() {
   if (loading) {
     return (
       <div className="page">
-        <div className="loading-wrap">
-          <div className="spinner" />
-          Load ho raha hai...
+        <div style={{ display: 'grid', gap: 12 }}>
+          <SkeletonCard lines={1} />
+          <SkeletonCard lines={3} />
         </div>
       </div>
     )
   }
 
   return (
-    <div className="page">
+    <div className="page fade-in">
       <div className="page-head">
         <Link to="/resume/history" style={{ fontSize: 13, color: 'var(--ink-soft)' }}>&larr; History par wapas jayein</Link>
         <h1 style={{ marginTop: 12 }}>{check?.filename}</h1>

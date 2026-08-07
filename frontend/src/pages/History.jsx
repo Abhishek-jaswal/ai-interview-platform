@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getHistory } from '../api'
+import { SkeletonCard } from '../components/Skeleton'
 
 function scoreClass(score) {
   if (score >= 80) return 'good'
@@ -21,7 +22,7 @@ export default function History() {
   }, [])
 
   return (
-    <div className="page">
+    <div className="page fade-in">
       <div className="page-head">
         <div className="eyebrow">Past Checks</div>
         <h1>History</h1>
@@ -31,9 +32,10 @@ export default function History() {
       {error && <div className="error-banner">{error}</div>}
 
       {loading ? (
-        <div className="loading-wrap">
-          <div className="spinner" />
-          Load ho raha hai...
+        <div style={{ display: 'grid', gap: 12 }}>
+          <SkeletonCard lines={1} />
+          <SkeletonCard lines={1} />
+          <SkeletonCard lines={1} />
         </div>
       ) : items.length === 0 ? (
         <div className="empty-state">

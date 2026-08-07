@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getCategories, getCredits } from '../interviewApi'
+import { SkeletonGrid } from '../components/Skeleton'
 
 export default function AIInterview() {
   const [categories, setCategories] = useState([])
@@ -20,7 +21,7 @@ export default function AIInterview() {
   }, [])
 
   return (
-    <div className="page">
+    <div className="page fade-in">
       <div className="page-head">
         <div className="eyebrow">AI Interview</div>
         <h1>Category chunein</h1>
@@ -34,7 +35,7 @@ export default function AIInterview() {
       {error && <div className="error-banner">{error}</div>}
 
       {loading ? (
-        <div className="loading-wrap"><div className="spinner" />Load ho raha hai...</div>
+        <SkeletonGrid count={6} />
       ) : (
         <div className="category-grid">
           {categories.map((cat) => (

@@ -10,9 +10,7 @@ async function handleResponse(res) {
     try {
       const data = await res.json()
       detail = data.detail || detail
-    } catch (e) {
-      // ignore parse failure
-    }
+    } catch (e) {}
     throw new Error(detail)
   }
   if (res.status === 204) return null
